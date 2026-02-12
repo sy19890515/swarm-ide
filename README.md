@@ -55,18 +55,32 @@ https://zhuanlan.zhihu.com/p/2000736341479138182
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&repo=chmod777john/swarm-ide)
 
 ### 方式二：本地运行
-```
+1. 进入项目后端目录：
+```bash
 cd swarm-ide
 cd backend
+```
 
+2. 该项目依赖 PostgreSQL 和 Redis，请先启动 Docker：
+```bash
+docker compose up -d
+```
+
+3. 配置环境变量：
+```bash
 cp .env.example .env.local
 # 在 .env.local 填写你的 KEY 和模型
+```
 
-docker compose up -d
-curl -X POST http://127.0.0.1:3017/api/admin/init-db
+4. 安装依赖并启动服务：
+```bash
 bun install
 bun dev
 ```
+
+In a **new terminal**, run the initialization command:
+```bash
+curl -X POST http://127.0.0.1:3017/api/admin/init-db
 
 访问 http://localhost:3017
 
